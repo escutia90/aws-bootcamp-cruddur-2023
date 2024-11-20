@@ -1,7 +1,16 @@
 from datetime import datetime, timedelta, timezone
+from aws_xray_sdk.core import xray_recorder
 class HomeActivities:
   def run():
+    #xray segment creation
+    # Manually start a segment
+    with xray_recorder.begin_segment('HomeActivitiesSegment') as segment:
+        # Access the current segment
+        # Add custom metadata to the segment
+        segment.put_metadata('general', {'info': 'This is a custom metadata example'}, 'data')
+
     now = datetime.now(timezone.utc).astimezone()
+
     results = [{
       'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
       'handle':  'Andrew Brown',
