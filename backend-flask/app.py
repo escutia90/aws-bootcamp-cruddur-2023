@@ -66,7 +66,7 @@ with app.app_context():
         # access token
         rollbar_access_token,
         # environment name - any string, like 'production' or 'development'
-        'production',
+        'flasktest',
         # server root directory, makes tracebacks prettier
         root=os.path.dirname(os.path.realpath(__file__)),
         # flask already sets up logging
