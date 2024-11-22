@@ -1,9 +1,9 @@
 from datetime import datetime, timedelta, timezone
-from aws_xray_sdk.core import xray_recorder
+#from aws_xray_sdk.core import xray_recorder
 import logging #for cloudwatch logs
 
 class HomeActivities:
-  def run(logger):
+  def run():
     #log to cloudwatch, enable this line to start logging to cloudwatch
     #logger.info('/api/activities/home')
 
