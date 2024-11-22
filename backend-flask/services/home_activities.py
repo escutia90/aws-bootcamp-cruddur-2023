@@ -1,13 +1,18 @@
 from datetime import datetime, timedelta, timezone
 from aws_xray_sdk.core import xray_recorder
+import logging #for cloudwatch logs
+
 class HomeActivities:
-  def run():
-    #xray segment creation
+  def run(logger):
+    #log to cloudwatch, enable this line to start logging to cloudwatch
+    #logger.info('/api/activities/home')
+
+    #xray segment creation TODO: not working now 
     # Manually start a segment
-    with xray_recorder.begin_segment('HomeActivitiesSegment') as segment:
+    #with xray_recorder.begin_segment('HomeActivitiesSegment') as segment:
         # Access the current segment
         # Add custom metadata to the segment
-        segment.put_metadata('general', {'info': 'This is a custom metadata example'}, 'data')
+    #    segment.put_metadata('general', {'info': 'This is a custom metadata example'}, 'data')
 
     now = datetime.now(timezone.utc).astimezone()
 
