@@ -28,8 +28,8 @@ from services.create_message import *
 from services.show_activity import *
 
 #AWS xray imports
-#from aws_xray_sdk.core import xray_recorder
-#from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+from aws_xray_sdk.core import xray_recorder
+from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
 
 #rollbar imports
 import os
@@ -47,7 +47,7 @@ from flask import got_request_exception
 
 #xray 
 #xray_url = os.getenv("AWS_XRAY_URL")
-#xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
+#xray_reXRAY_URLcorder.configure(service='backend-flask', dynamic_naming=xray_url)
 
 
 # Initialize tracing and an exporter that can send data to Honeycomb
@@ -143,8 +143,11 @@ def data_create_message():
 
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
-  data = HomeActivities.run()
-  #data = HomeActivities.run(logger=LOGGER) #enable for xray
+  #enable to start xray segment recording
+  # segment = xray_recorder.current_segment()
+  # segment.put_metadata('general', {'info': 'This is a custom metadata example'}, 'data')
+  # data = HomeActivities.run()
+  #data = HomeActivities.run(logger=LOGGER) #enable for   
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
