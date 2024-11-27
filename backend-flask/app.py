@@ -146,7 +146,7 @@ def data_home():
   #enable to start xray segment recording
   # segment = xray_recorder.current_segment()
   # segment.put_metadata('general', {'info': 'This is a custom metadata example'}, 'data')
-  # data = HomeActivities.run()
+  data = HomeActivities.run()
   #data = HomeActivities.run(logger=LOGGER) #enable for   
   return data, 200
 
