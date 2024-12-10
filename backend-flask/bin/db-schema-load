@@ -1,0 +1,22 @@
+#! /usr/bin/bash
+
+echo "db-schema-load"
+
+# Get the directory of the script
+script_dir=$(dirname "$(realpath "$0")")
+
+# Set the correct path to the schema.sql file by going up one directory and then into db
+schema_path="$script_dir/../db/schema.sql"
+
+if [ "$1" = "prod" ]; then
+  echo "Running in production mode"
+  URL=$PROD_CONNECTION_URL
+else
+  URL=$CONNECTION_URL
+fi
+
+psql $URL cruddur < $schema_path
+
+# Load the schema using psql
+psql $CONNECTION_URL cruddur < "$schema_path"
+
