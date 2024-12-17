@@ -1,3 +1,9 @@
 #! /usr/bin/bash
 
-psql $CONNECTION_URL
+if [ "$1" = "prod" ]; then
+  echo "connecting to prod rds db..."
+  psql $PRODUCTION_URL
+else
+  echo "connecting to local postgress db..."
+  psql $CONNECTION_URL
+fi
